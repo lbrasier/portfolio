@@ -1,7 +1,7 @@
 using System.Web.Http;
+using WebActivatorEx;
 using ContactsList.API;
 using Swashbuckle.Application;
-using WebActivatorEx;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
@@ -11,6 +11,8 @@ namespace ContactsList.API
     {
         public static void Register()
         {
+            var thisAssembly = typeof(SwaggerConfig).Assembly;
+
             GlobalConfiguration.Configuration 
                 .EnableSwagger(c =>
                     {
@@ -164,11 +166,9 @@ namespace ContactsList.API
                         // alternative implementation for ISwaggerProvider with the CustomProvider option.
                         //
                         //c.CustomProvider((defaultProvider) => new CachingSwaggerProvider(defaultProvider));
-                        
-                            })
-                        .EnableSwaggerUi(c =>
-                            {
-                        
+                    })
+                .EnableSwaggerUi(c =>
+                    {
                         // Use the "InjectStylesheet" option to enrich the UI with one or more additional CSS stylesheets.
                         // The file must be included in your project as an "Embedded Resource", and then the resource's
                         // "Logical Name" is passed to the method as shown below.
