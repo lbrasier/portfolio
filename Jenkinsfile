@@ -9,14 +9,12 @@ pipeline {
       steps {
         deleteDir()
         dir(path: '../current') {
-          sleep 4
+		   VersionNumber(versionNumberString: '1.0.${BUILD_YEAR}${BUILD_MONTH}${BUILD_DAY}.${BUILDS_TODAY}', projectStartDate: ' 2017-11-01')
+           git(url: 'https://github.com/lbrasier/portfolio.git', branch: 'develop')
+		   fileExists 'ContactListSample/ContactsList.API.csproj'
+           bat '"C:\\Program Files\\Nuget\\nuget.exe" restore "%WORKSPACE%\\ContactListSample\\ContactsList.API.csproj" -SolutionDirectory "%WORKSPACE%\\ContactListSample"'
+        } 
         }
-        
-        git(url: 'https://github.com/lbrasier/portfolio.git', branch: 'develop')
-        VersionNumber(versionNumberString: '1.0.${BUILD_YEAR}${BUILD_MONTH}${BUILD_DAY}.${BUILDS_TODAY}', projectStartDate: ' 2017-11-01')
-        fileExists 'ContactListSample/ContactsList.API.csproj'
-        bat '"C:\\Program Files\\Nuget\\nuget.exe" restore "%WORKSPACE%\\ContactListSample\\ContactsList.API.csproj" -SolutionDirectory "%WORKSPACE%\\ContactListSample"'
-      }
     }
     stage('Test') {
       steps {
