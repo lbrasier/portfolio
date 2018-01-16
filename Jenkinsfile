@@ -7,14 +7,10 @@ pipeline {
         ee = 'evalue1'
       }
       steps {
+	    deleteDir()
         git(url: 'https://github.com/lbrasier/portfolio.git', branch: 'develop')
-        deleteDir()
-		echo 'deleteDir'
         VersionNumber(versionNumberString: '1.0.${BUILD_YEAR}${BUILD_MONTH}${BUILD_DAY}.${BUILDS_TODAY}', projectStartDate: ' 2017-11-01')
-        echo 'VersionNumber'
-		echo 'ContactListSample/ContactsList.API.csproj'
-		echo '%WORKSPACE%/ContactListSample/ContactsList.API.csproj'
-		fileExists '%WORKSPACE%/ContactListSample/ContactsList.API.csproj'
+		fileExists 'ContactListSample/ContactsList.API.csproj'
 		bat '"C:\\Program Files\\Nuget\\nuget.exe" restore "%WORKSPACE%\\ContactListSample\\ContactsList.API.csproj" -SolutionDirectory "%WORKSPACE%\\ContactListSample"'
       }
     }
