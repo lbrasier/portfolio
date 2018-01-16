@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        git(url: 'https://github.com/lbrasier/portfolio/tree/develop/ContactListSample', branch: 'develop')
+        git(url: 'https://github.com/lbrasier/portfolio.git', branch: 'develop')
       }
     }
     stage('Test') {
