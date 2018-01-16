@@ -7,7 +7,7 @@ pipeline {
         dir(path: '../current') {
           deleteDir()
           git(url: 'https://github.com/lbrasier/portfolio.git', branch: 'develop')
-          bat(script: '"C:\\Program Files\\Nuget\\nuget.exe" restore "..\\current\\ContactListSample\\ContactsList.API.csproj" -SolutionDirectory "..\\current\\ContactListSample"', returnStdout: true)
+          bat(script: '"C:\\Program Files\\Nuget\\nuget.exe" restore "..\\current\\ContactListSample\\ContactsList.API.csproj" -SolutionDirectory "..\\current\\ContactListSample"', returnStdout: true, returnStatus: true)
         }
         
       }
