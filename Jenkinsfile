@@ -5,7 +5,8 @@ pipeline {
       agent any
       steps {
         dir(path: '../current') {
-          sleep 3
+          deleteDir()
+          git(url: 'https://github.com/lbrasier/portfolio.git', branch: 'develop')
         }
         
       }
