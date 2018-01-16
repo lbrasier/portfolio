@@ -5,13 +5,9 @@ pipeline {
       agent any
       steps {
         dir(path: '../current') {
-		  deleteDir()
-          VersionNumber(versionNumberString: '1.0.${BUILD_YEAR}${BUILD_MONTH}${BUILD_DAY}.${BUILDS_TODAY}', projectStartDate: ' 2017-11-01')
-          git(url: 'https://github.com/lbrasier/portfolio.git', branch: 'develop')
-          sleep 2
-          fileExists 'ContactListSample/ContactsList.API.csproj'
-          bat(script: '"C:\\Program Files\\Nuget\\nuget.exe" restore "$MYWORKSPACE\\ContactListSample\\ContactsList.API.csproj" -SolutionDirectory "$MYWORKSPACE\\ContactListSample"', returnStdout: true)
+          sleep 3
         }
+        
       }
     }
     stage('Test') {
