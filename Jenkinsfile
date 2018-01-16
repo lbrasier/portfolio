@@ -15,6 +15,10 @@ pipeline {
           bat(script: '"C:\\Program Files\\Nuget\\nuget.exe" restore "${MYWORKSPACE}\\ContactListSample\\ContactsList.API.csproj" -SolutionDirectory "${MYWORKSPACE}\\ContactListSample"', returnStdout: true)
         }
         
+        dir(path: '../current') {
+          sleep 6
+        }
+        
       }
     }
     stage('Test') {
