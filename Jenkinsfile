@@ -11,6 +11,7 @@ pipeline {
         deleteDir()
         VersionNumber(versionNumberString: '1.0.${BUILD_YEAR}${BUILD_MONTH}${BUILD_DAY}.${BUILDS_TODAY}', projectStartDate: ' 2017-11-01')
         bat '"C:\\Program Files\\Nuget\\nuget.exe" restore "%WORKSPACE%\\ContactListSample\\ContactsList.API.csproj" -SolutionDirectory "%WORKSPACE%\\ContactListSample"'
+        fileExists 'ContactListSample\\ContactsList.API.csproj'
       }
     }
     stage('Test') {
