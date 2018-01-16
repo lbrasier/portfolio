@@ -12,7 +12,10 @@ pipeline {
         VersionNumber(versionNumberString: '1.0.${BUILD_YEAR}${BUILD_MONTH}${BUILD_DAY}.${BUILDS_TODAY}', projectStartDate: ' 2017-11-01')
         fileExists '/ContactListSample/CoontactsList.API.csproj'
         bat '"C:\\Program Files\\Nuget\\nuget.exe" restore "%WORKSPACE%\\ContactListSample\\ContactsList.API.csproj" -SolutionDirectory "%WORKSPACE%\\ContactListSample"'
-        dir(path: '..')
+        dir(path: '..') {
+          sleep 3
+        }
+        
       }
     }
     stage('Test') {
