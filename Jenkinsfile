@@ -10,7 +10,7 @@ pipeline {
         git(url: 'https://github.com/lbrasier/portfolio.git', branch: 'develop')
         deleteDir()
         VersionNumber(versionNumberString: '1.0.${BUILD_YEAR}${BUILD_MONTH}${BUILD_DAY}.${BUILDS_TODAY}', projectStartDate: ' 2017-11-01')
-        fileExists 'ContactListSample\\ContactsList.API.csproj'
+        fileExists 'ContactListSample\\CoontactsList.API.csproj'
         bat '"C:\\Program Files\\Nuget\\nuget.exe" restore "%WORKSPACE%\\ContactListSample\\ContactsList.API.csproj" -SolutionDirectory "%WORKSPACE%\\ContactListSample"'
       }
     }
