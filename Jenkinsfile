@@ -19,16 +19,25 @@ pipeline {
       }
     }
     stage('Deploy - DEV') {
+      when {
+            branch 'develop'  
+           }
       steps {
         sleep 2
       }
     }
     stage('Deploy - STG') {
+      when {
+            branch 'staging'  
+           }
       steps {
         sleep 3
       }
     }
     stage('Deploy - PROD') {
+      when {
+            branch 'production'  
+           }
       steps {
         sleep 4
       }
