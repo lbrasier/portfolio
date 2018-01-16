@@ -2,3 +2,5 @@ npm-debug.log
 ContactListSample/bin/*
 ContactListSample/obj/*
 ContactListSample/packages/*
+ContactListSample/.vs/
+*.user
