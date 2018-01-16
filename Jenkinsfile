@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        git(url: 'https://github.com/lbrasier/portfolio/tree/develop/ContactListSample', branch: 'develop', changelog: true)
+        git(url: 'https://github.com/lbrasier/portfolio/tree/develop/ContactListSample', branch: 'develop')
       }
     }
     stage('Test') {
@@ -26,5 +26,8 @@ pipeline {
         sleep 4
       }
     }
+  }
+  environment {
+    ee = 'evalue'
   }
 }
