@@ -9,15 +9,11 @@ pipeline {
       steps {
         deleteDir()
         dir(path: '../current') {
-          VersionNumber(versionNumberString: '1.0.${BUILD_YEAR}${BUILD_MONTH}${BUILD_DAY}.${BUILDS_TODAY}', projectStartDate: ' 2017-11-01')
-          withEnv(overrides: ['MYWORKSPACE=../current']) {
+            VersionNumber(versionNumberString: '1.0.${BUILD_YEAR}${BUILD_MONTH}${BUILD_DAY}.${BUILDS_TODAY}', projectStartDate: ' 2017-11-01')
             git(url: 'https://github.com/lbrasier/portfolio.git', branch: 'develop')
             fileExists 'ContactListSample/ContactsList.API.csproj'
             bat(script: '"C:\\Program Files\\Nuget\\nuget.exe" restore "$MYWORKSPACE\\ContactListSample\\ContactsList.API.csproj" -SolutionDirectory "$MYWORKSPACE\\ContactListSample"', returnStdout: true)
-          }
-          
         }
-        
       }
     }
     stage('Test') {
